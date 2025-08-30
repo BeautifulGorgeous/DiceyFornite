@@ -1,4 +1,5 @@
 import { useInterfaceLanguage } from "@/contexts/LanguageContext";
+import { useSettings } from "@/contexts/SettingsContext";
 import { saveSkin } from "@/db/skins";
 import { Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
@@ -7,6 +8,7 @@ import { ChangeEvent, FC, useCallback, useMemo, useState } from "react";
 export const AddingSkinTab:FC = () => {
     const [skinName, setSkinName] = useState("");
     const [styles, setStyles] = useState<Array<string>>([]);
+    const {activeProfile} = useSettings();
     
     const {_t} = useInterfaceLanguage();
 
@@ -30,11 +32,11 @@ export const AddingSkinTab:FC = () => {
     }, []);
 
     const handleSaveSkin = useCallback(async () => {
-        await saveSkin(skinName, styles);
+        await saveSkin(activeProfile, skinName, styles);
         setSkinName("")
         setStyles([]);
         window.dispatchEvent(new Event("upd-played-games"));
-    }, [skinName, styles]);
+    }, [activeProfile, skinName, styles]);
 
     const saveSkinAvailable = useMemo(() => [skinName].concat(styles || []).filter(x => x.length >= 3).length === styles.length + 1, [skinName, styles]);
 

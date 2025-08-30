@@ -106,11 +106,12 @@ export async function getPlayedGames(skin: number) {
     }
 }
 
-export async function saveSkin(skinName: string, styles: Array<string>) {
+export async function saveSkin(profile: number | null, skinName: string, styles: Array<string>) {
     
     const skin = await prisma.skin.create({
         data: {
             name: skinName,
+            profileId: profile,
         }
     })
 
@@ -122,6 +123,4 @@ export async function saveSkin(skinName: string, styles: Array<string>) {
     const result = await prisma.skinStyle.createMany({
         data: stylesData,
     })
-
-    console.log("saveskinres", skin, result);
 }

@@ -57,12 +57,12 @@ export const SettingsContextProvider = ({children}: SettingsContextProviderProps
     }, [updateSetting]);
 
     const setRollStrategy = useCallback(async (value: string) => {
-        updateSetting("rollStrategy", value)
-    }, [updateSetting]);
+        updateSetting(`rollStrategy_${settings?.activeProfile}`, value)
+    }, [settings?.activeProfile, updateSetting]);
 
     const setRollStrategyLessThanOrEqualThreshold = useCallback(async (value: string) => {
-        updateSetting("rollStrategyLessThanOrEqual", value)
-    }, [updateSetting]);
+        updateSetting(`rollStrategyLessThanOrEqual_${settings?.activeProfile}`, value)
+    }, [settings?.activeProfile, updateSetting]);
 
     useEffect(() => {
         fetchSettings();

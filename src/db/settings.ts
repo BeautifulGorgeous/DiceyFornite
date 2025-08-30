@@ -13,9 +13,9 @@ export async function getSettings(): Promise<Settings> {
         activeProfile = null;
     }
 
-    const omitSavingData = settings.find(s => s.key === "omitSavingData")?.value === "1";
-    const rollStrategy = settings.find(s => s.key === "rollStrategy")?.value;
-    const rollStrategyLessThanOrEqual = settings.find(s => s.key === "rollStrategyLessThanOrEqual")?.value;
+    const omitSavingData = settings.find(s => s.key === `omitSavingData_${activeProfile}`)?.value === "1";
+    const rollStrategy = settings.find(s => s.key === `rollStrategy_${activeProfile}`)?.value;
+    const rollStrategyLessThanOrEqual = settings.find(s => s.key === `rollStrategyLessThanOrEqual_${activeProfile}`)?.value;
 
     return {
         activeProfile,

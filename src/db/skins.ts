@@ -13,12 +13,16 @@ export type Skin = {
     styles?: Array<SkinStyle>;
 }
 
-async function getSkinsList(): Promise<Array<Skin>> {
+async function getSkinsList(profile: number | null): Promise<Array<Skin>> {
     const skins = await prisma.skin.findMany({
         orderBy: {
             name: "asc",
+        },
+        where: {
+            profileId: profile,
         }
     });
+    console.log("profile", profile, "skinds", skins[0])
     const skinStyles = await prisma.skinStyle.findMany();
 
     return skins
@@ -43,8 +47,8 @@ export type Stats = {
     }>
 }
 
-export async function getAllSkins(): Promise<Array<Stats>>  {
-    const skins = await getSkinsList();
+export async function getAllSkins(profile: number | null): Promise<Array<Stats>>  {
+    const skins = await getSkinsList(profile);
     const games = await prisma.game.findMany();
 
     return skins

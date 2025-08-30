@@ -75,6 +75,7 @@ export const GameOptions:FC = () => {
     return <>    
         <Button
             className="w-full mt-2"
+            disabled={!skins || skins.length === 0}
             onClick={handleGetNewCharacter}
             variant="text"
         >

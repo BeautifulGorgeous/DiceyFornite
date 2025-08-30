@@ -48,13 +48,13 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <LanguageContextProvider>
-              <SkinsContextProvider>
-                <SettingsContextProvider>
-                  <CurrentSkinContextProvider>
-                        {children}
-                  </CurrentSkinContextProvider>
-                </SettingsContextProvider>
-              </SkinsContextProvider>
+              <SettingsContextProvider>
+                <SkinsContextProvider>
+                    <CurrentSkinContextProvider>
+                          {children}
+                    </CurrentSkinContextProvider>
+                </SkinsContextProvider>
+              </SettingsContextProvider>
             </LanguageContextProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>

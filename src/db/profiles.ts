@@ -11,3 +11,30 @@ export async function getProfiles() {
 
     return profiles;
 }
+
+export async function addProfile(name: string) {
+    return prisma.profile.create({
+        data: {
+            name,
+        },
+    });
+}
+
+export async function renameProfile(id: number, name: string) {
+    return prisma.profile.update({
+        data: {
+            name,
+        },
+        where: {
+            id,
+        }
+    })
+}
+
+export async function deleteProfile(id: number) {
+    return prisma.profile.delete({
+        where: {
+            id,
+        }
+    })
+}

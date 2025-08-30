@@ -17,7 +17,7 @@ export const HomeView:FC = () => {
     }
 
     return <>
-        <Tabs
+        {/* <Tabs
             onChange={handleTabChange}
             value={currentTab}
         >
@@ -29,9 +29,9 @@ export const HomeView:FC = () => {
                 label={_t("Adding skin")}
                 value="2"
             />
-        </Tabs>
+        </Tabs> */}
         {currentTab === "1" ? <PlayingTab/> : null}
-        {currentTab === "2" ? <AddingSkinTab/> : null}
+        {/* {currentTab === "2" ? <AddingSkinTab/> : null} */}
     </>
 }
 

@@ -6,6 +6,7 @@ import { ChangeEvent, FC, useCallback } from "react";
 import { DrawerHeader } from "./DrawerHeader";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { ProfileSelection } from "../Base/ProfileSelection";
 
 type AppBarDrawerProps = {
     closeSettings: () => void,
@@ -17,8 +18,10 @@ export const AppBarDrawer:FC<AppBarDrawerProps> = ({
     open,
 }) => {
     const {
+        activeProfile,
         rollStrategyLessThanOrEqual,
         rollStrategy,
+        setActiveProfile,
         setRollStrategyLessThanOrEqualThreshold,
         setRollStrategy,
     } = useSettings();
@@ -48,6 +51,7 @@ export const AppBarDrawer:FC<AppBarDrawerProps> = ({
                 </IconButton>
             </DrawerHeader>
             <Divider/>
+            <ProfileSelection/>
             <FormGroup
                 sx={{
                     px: 2,

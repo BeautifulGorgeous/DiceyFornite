@@ -10,12 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Profile {
+  id        Int         @id @default(autoincrement())
+  name      String
+  Skin      Skin[]
+}
+
 model Skin {
   id        Int         @id @default(autoincrement())
   createdAt DateTime    @default(now())
   name      String
   styles    SkinStyle[]
   purchased DateTime?
+  profile   Profile?     @relation(fields: [profileId], references: [id])
+  profileId    Int?
 }
 
 model SkinStyle {

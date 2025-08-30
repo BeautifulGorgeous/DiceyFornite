@@ -32,7 +32,6 @@ async function getSkinsList(): Promise<Array<Skin>> {
         }));
 }
 
-
 export type Stats = {
     id: number,
     name: string | null,

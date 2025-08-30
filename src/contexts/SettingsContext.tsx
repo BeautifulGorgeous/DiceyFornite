@@ -13,17 +13,20 @@ import {
 } from "react";
 
 type SettingsContextType = {
+    activeProfile: number | null,
     omitSavingData: boolean | null,
     rollStrategy: string | null,
     rollStrategyLessThanOrEqual: number,
     loading: boolean,
-    setRollStrategy: ((strategy: string) => void),
+    setActiveProfile: (profile: number) => void,
+    setRollStrategy: (strategy: string) => void,
     setRollStrategyLessThanOrEqualThreshold: ((thershold: string) => void),
 }
 
 const SettingsContext = createContext<SettingsContextType>({
     ...DefaultSettings,
     loading: true,
+    setActiveProfile: () => {},
     setRollStrategy: () => {},
     setRollStrategyLessThanOrEqualThreshold: () => {},
 })
@@ -49,6 +52,10 @@ export const SettingsContextProvider = ({children}: SettingsContextProviderProps
         fetchSettings();
     }, []);
 
+    const setActiveProfile = useCallback(async (value: number) => {
+        updateSetting("activeProfile", value?.toString())
+    }, [updateSetting]);
+
     const setRollStrategy = useCallback(async (value: string) => {
         updateSetting("rollStrategy", value)
     }, [updateSetting]);
@@ -65,6 +72,7 @@ export const SettingsContextProvider = ({children}: SettingsContextProviderProps
         value={ {
             ...settings,
             loading,
+            setActiveProfile,
             setRollStrategy,
             setRollStrategyLessThanOrEqualThreshold,
         } }

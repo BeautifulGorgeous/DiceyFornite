@@ -5,6 +5,7 @@ export const DiceGameRollStrategy = {
 }
 
 export type Settings = {
+    activeProfile: number | null,
     omitSavingData: boolean,
     rollStrategy: string,
     rollStrategyLessThanOrEqual: number,

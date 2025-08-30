@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useInterfaceLanguage } from "@/contexts/LanguageContext";
 import { numWords } from "@/helpers";
+import { useSettings } from "@/contexts/SettingsContext";
 
 
 const chartXLabels = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
@@ -18,12 +19,13 @@ export const StatsSection: FC = () => {
     const [stats, setStats] = useState<Array<Stats>>([]);
     const [search, setSearch] = useState<string | null>(null);
     const [expanded, setExpanded] = useState(false);
+    const {activeProfile} = useSettings();
 
     const { _t } = useInterfaceLanguage();
 
     const fetchStats = useCallback(async () => {
-        setStats(await getAllSkins());
-    }, []);
+        setStats(await getAllSkins(activeProfile));
+    }, [activeProfile]);
 
     const handleExpand = useCallback(() => setExpanded(true), []);
 

@@ -1,6 +1,8 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import { FC } from "react";
+import { useSettings } from "@/contexts/SettingsContext";
+import { useProfiles } from "../Base/ProfileSelection/useProfiles";
 
 type HeaderProps = {
     toggleSettingsOpen: () => void,
@@ -9,6 +11,12 @@ type HeaderProps = {
 export const Header:FC<HeaderProps> = ({
     toggleSettingsOpen,
 }) => {
+    const { activeProfile } = useSettings();
+    const { profiles } = useProfiles();
+
+
+    const activeProfileName = profiles.find(p => p.id === activeProfile)?.name || null;
+
     return <AppBar
         position="fixed"
     >
@@ -21,7 +29,7 @@ export const Header:FC<HeaderProps> = ({
                 }}
                 variant="h6"
             >
-                Fornite Fun
+                Dicey Fortnite { activeProfileName ? ` - ${activeProfileName}` : null }
             </Typography>
             <IconButton
                 color="inherit"

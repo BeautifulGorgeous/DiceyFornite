@@ -9,6 +9,7 @@ import {
     useEffect,
     useState,
 } from "react";
+import { useSettings } from "./SettingsContext";
 
 type SkinsContextType = {
     loading: boolean,
@@ -29,12 +30,13 @@ type SkinsContextProviderProps = {
 export const SkinsContextProvider = ({children}: SkinsContextProviderProps) => {
     const [skins, setSkins] = useState<Array<Stats>>([]);
     const [loading, setLoading] = useState(false);
+    const {activeProfile} = useSettings();
 
     const fetchSkins = useCallback(async () => {
         setLoading(true);
-        setSkins(await getAllSkins());
+        setSkins(await getAllSkins(activeProfile));
         setLoading(false);
-    }, []);
+    }, [activeProfile]);
 
     useEffect(() => {
         fetchSkins();

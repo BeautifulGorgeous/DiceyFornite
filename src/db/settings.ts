@@ -7,10 +7,18 @@ import { DiceGameRollStrategy, Settings } from "@/types";
 export async function getSettings(): Promise<Settings> {
     const settings = await prisma.settings.findMany();
 
-    const omitSavingData = settings.find(s => s.key === "omitSavingData")?.value === "1";
-    const rollStrategy = settings.find(s => s.key === "rollStrategy")?.value;
-    const rollStrategyLessThanOrEqual = settings.find(s => s.key === "rollStrategyLessThanOrEqual")?.value;
+    let activeProfile: number | null = parseInt(settings.find(s => s.key === "activeProfile")?.value || "");
+
+    if (isNaN(activeProfile)) {
+        activeProfile = null;
+    }
+
+    const omitSavingData = settings.find(s => s.key === `omitSavingData_${activeProfile}`)?.value === "1";
+    const rollStrategy = settings.find(s => s.key === `rollStrategy_${activeProfile}`)?.value;
+    const rollStrategyLessThanOrEqual = settings.find(s => s.key === `rollStrategyLessThanOrEqual_${activeProfile}`)?.value;
+
     return {
+        activeProfile,
         omitSavingData: omitSavingData,
         rollStrategy: rollStrategy || DiceGameRollStrategy.All,
         rollStrategyLessThanOrEqual: typeof rollStrategyLessThanOrEqual !== "undefined" ? parseInt(rollStrategyLessThanOrEqual) : DefaultSettings.rollStrategyLessThanOrEqual,

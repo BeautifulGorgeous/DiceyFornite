@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Skin {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  name      String
+  styles    SkinStyle[]
+  purchased DateTime?
+}
+
+model SkinStyle {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  name      String?
+  obtained  DateTime?
+  skin      Skin?     @relation(fields: [skinId], references: [id])
+  skinId    Int?
+  Game      Game[]
+}
+
+model Game {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  played    DateTime?
+  position  Int?
+  style     SkinStyle @relation(fields: [styleId], references: [id])
+  styleId   Int
+}
+
+model Settings {
+  id        Int       @id @default(autoincrement())
+  key       String
+  value        String
+}

@@ -1,0 +1,28 @@
+{
+    "No skin selected": "Скин не выбран",
+    "Selected {0} with style {1}": "Выбрана {0} со стилем {1}",
+    "Selected {0}": "Выбрана {0}",
+    "Games played this skin today: {0}": "Игр сегодня на скине: {0}",
+    "Total: {0}": "Всего: {0}",
+    "Throw dice": "Бросить кубик",
+    "Get another skin": "Получить другой скин",
+    "Position": "Занятое место",
+    "Save game": "Сохранить игру",
+    "Prefer skins with less or equal amount of games": "Предпочитать скины с меньшим или равным количеством игр",
+    "Not more than X games": "Не более, чем Х игр",
+    "Show table stats": "Показать статистику таблицой",
+    "Skin": "Скин",
+    "Skins": "Скинов",
+    "Games played overall": "Сыграно игр всего",
+    "Games played": "Сыграно игр",
+    "Count of skins by played games": "Количество скинов и сыгранных игр",
+    "Skins count": "Количество скинов",
+    "{0} games": "{0} игр",
+    "game": "игра",
+    "games": "игр",
+    "game_s": "игры",
+    "Total skins: {0}": "Всего скинов: {0}",
+    "{0} {1} and more": "{0} {1} и больше",
+
+    "": ""
+}

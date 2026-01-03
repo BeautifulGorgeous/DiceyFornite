@@ -1,5 +1,5 @@
 "use server";
-import {prisma} from "@/db/connector";
+import {prisma} from "./connector";
 
 
 export async function getProfiles() {
@@ -8,7 +8,8 @@ export async function getProfiles() {
             "id": "asc",
         }
     });
-
+    
+    console.log("prs", profiles);
     return profiles;
 }
 

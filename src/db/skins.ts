@@ -1,6 +1,6 @@
 "use server";
 
-import {prisma} from "@/db/connector";
+import {prisma} from "./connector";
 
 type SkinStyle = {
     id: number,

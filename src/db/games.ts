@@ -1,5 +1,5 @@
 "use server";
-import {prisma} from "@/db/connector";
+import {prisma} from "./connector";
 
 export async function saveGame(skinStyleId: number | null, played: Date = new Date(), position: number | null) {
     if (typeof skinStyleId === "number") {

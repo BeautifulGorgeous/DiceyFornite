@@ -1,15 +1,9 @@
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../../prisma/generated/prisma/client';
+import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
 
-const prismaClientSingleton = () => {
-  return new PrismaClient();
-};
+const adapter = new PrismaBetterSqlite3({
+  url: process.env.DATABASE_URL,
+})
 
-declare global {
-  /* eslint-disable-next-line no-var */
-  var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
-}
-
-export const prisma = globalThis.prisma ?? prismaClientSingleton();
-
-if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma;
+export const prisma = new PrismaClient({ adapter });

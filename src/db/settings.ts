@@ -1,6 +1,6 @@
 "use server";
 import { DefaultSettings } from "@/constants";
-import {prisma} from "@/db/connector";
+import {prisma} from "./connector";
 import { DiceGameRollStrategy, Settings } from "@/types";
 
 

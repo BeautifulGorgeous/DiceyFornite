@@ -1,7 +1,7 @@
 import SkinSelection from "@/components/SkinSelection";
 import { StatsSection } from "@/components/StatsSection";
 import {Stack } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import {
     FC,
 } from "react";

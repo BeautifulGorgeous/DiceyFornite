@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useCallback, useState } from "react";
 import { Button, TextField } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import { useCurrentSkin } from "@/contexts/CurrentSkinContext";
 import { useGamesPlayed } from "@/helpers/useGamesPlayed";
 import { useInterfaceLanguage } from "@/contexts/LanguageContext";

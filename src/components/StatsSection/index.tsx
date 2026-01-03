@@ -104,8 +104,8 @@ export const StatsSection: FC = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredStats.map(stat => (
-                            <StatsTableRow key={stat.name} item={stat} />
+                        {filteredStats.map((stat, idx) => (
+                            <StatsTableRow key={`${stat.name}_${idx}`} item={stat} />
                         ))}
                     </TableBody>
                 </Table>

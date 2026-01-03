@@ -2,7 +2,7 @@ import { useInterfaceLanguage } from "@/contexts/LanguageContext";
 import { useSettings } from "@/contexts/SettingsContext";
 import { saveSkin } from "@/db/skins";
 import { Button, TextField } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import { ChangeEvent, FC, useCallback, useMemo, useState } from "react";
 
 export const AddingSkinTab:FC = () => {
